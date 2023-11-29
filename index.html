@@ -75,7 +75,7 @@
             sceneEl.addEventListener('loaded', function () {
                 arSystem = sceneEl.systems["mindar-image-system"];
             });
-            const exampleTarget = document.querySelector('#example-target');
+            const exampleTargets = document.querySelectorAll('a-entity');
             const examplePlane = document.querySelector('#example-plane');
             const startButton = document.querySelector("#example-start-button");
             const stopButton = document.querySelector("#example-stop-button");
@@ -100,25 +100,31 @@
             });
             // arReady event triggered when ready
             sceneEl.addEventListener("arReady", (event) => {
-                // console.log("MindAR is ready")
+                // console.log("MindAR is ready");
             });
             // arError event triggered when something went wrong. Mostly browser compatbility issue
             sceneEl.addEventListener("arError", (event) => {
-                console.log("MindAR failed to start")
-                console.log(event.)
+                console.log("MindAR failed to start");
+                console.log(event);
             });
-            // detect target found
-            exampleTarget.addEventListener("targetFound", event => {
-                console.log("target found");
-            });
-            // detect target lost
-            exampleTarget.addEventListener("targetLost", event => {
-                console.log("target lost");
-            });
+
+            for(let i = 0; i < exampleTargets.length; i++) {
+                let exampleTarget = exampleTargets[i];
+                // detect target found
+                exampleTarget.addEventListener("targetFound", event => {
+                    console.log("target found");
+                    console.log(event);
+                });
+                // detect target lost
+                exampleTarget.addEventListener("targetLost", event => {
+                    console.log("target lost");
+                    console.log(event);
+                });
+            }
             // detect click event
-            examplePlane.addEventListener("click", event => {
-                console.log("plane click");
-            });
+            // examplePlane.addEventListener("click", event => {
+            //     console.log("plane click");
+            // });
         });
     </script>
 </head>
@@ -154,6 +160,10 @@
         <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
     </a-entity>
     <a-entity mindar-image-target="targetIndex: 3">
+        <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+        <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
+    </a-entity>
+    <a-entity mindar-image-target="targetIndex: 4targets (1).mind">
         <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
         <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
     </a-entity>
