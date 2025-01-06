@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capture Picture from Camera</title>
+    <style>
+        video, canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #captureButton {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1>Camera Capture Example</h1>
+
+<!-- Video stream -->
+<video id="video" autoplay playsinline></video>
+<br>
+
+<!-- Capture button -->
+<button id="captureButton">Capture Photo</button>
+<br><br>
+
+<!-- Canvas to display captured image -->
+<h2>Captured Image</h2>
+<canvas id="canvas"></canvas>
+
+<script src="camera.js"></script>
+</body>
+</html>
