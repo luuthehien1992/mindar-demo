@@ -1,0 +1,44 @@
+<html>
+<body>
+<div id="fb-root"></div>
+
+<button id="btn-share">Share</button>
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '2006825969829075', // Replace with your app ID
+            cookie: true,        // Enable cookies to allow the server to access the session
+            xfbml: true,         // Parse social plugins on this webpage
+            version: 'v16.0'     // Use the latest version of the Graph API
+        });
+        FB.AppEvents.logPageView(); // Log a page view event
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script type="text/javascript">
+    document.querySelector('#btn-share').addEventListener('click', function () {
+        FB.ui({
+            method: 'share',
+            picture: 'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg',
+            href: 'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg', // The link to share
+            hashtag: '#example',
+        }, function (response) {
+            if (response && !response.error_message) {
+                alert('Successfully shared!');
+            } else {
+                alert('Error while sharing.');
+            }
+        });
+    });
+</script>
+</body>
+</html>
