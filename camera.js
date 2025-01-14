@@ -26,13 +26,24 @@ navigator.mediaDevices.getUserMedia({
         console.error('Error accessing camera:', err);
     });
 
+// let canvas = document.getElementById('canvas-filter');
+let img = new Image();
+// let ctx = canvas.getContext('2d');
+
+// img.onload = function () {
+//     ctx.drawImage(img, 0, 0, canvas.width, canvas.height); // Or at whatever offset you like
+// };
+
+img.src = 'ben_thanh_filter.png';
 // Capture the image from the video stream
 captureButton.addEventListener('click', () => {
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
+    console.log(video.videoWidth, video.videoHeight);
     // canvas.width = 1080;
     // canvas.height = 1920;
 
     // Draw the current frame from the video to the canvas
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height); // Or at whatever offset you like
 });
