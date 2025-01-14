@@ -2,6 +2,7 @@ const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
 const captureButton = document.getElementById('captureButton');
 const ctx = canvas.getContext('2d');
+// const videoCtx = video.getContext('2d');
 
 // Request access to the camera
 navigator.mediaDevices.getUserMedia({
@@ -20,6 +21,11 @@ navigator.mediaDevices.getUserMedia({
 
             // Display dimensions
             console.log(`Camera Dimensions: ${width} x ${height}`);
+            //
+            // let scaleFactor = 0.3;
+            // Draw the current frame from the video to the canvas
+            // ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            // videoCtx.drawImage(img, 0, height - height * scaleFactor, width, width * scaleFactor); // Or at whatever offset you like
         });
     })
     .catch((err) => {
