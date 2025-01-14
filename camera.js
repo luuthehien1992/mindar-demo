@@ -42,8 +42,9 @@ captureButton.addEventListener('click', () => {
     console.log(video.videoWidth, video.videoHeight);
     // canvas.width = 1080;
     // canvas.height = 1920;
+    let scaleFactor = 0.7;
 
     // Draw the current frame from the video to the canvas
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height); // Or at whatever offset you like
+    ctx.drawImage(img, 0, canvas.height - canvas.height * scaleFactor, canvas.width, video.videoHeight * scaleFactor); // Or at whatever offset you like
 });
