@@ -10,6 +10,7 @@ setInterval(function () {
     //     allStorage();
     // });
 
+    console.log('show all storage');
 
     allStorage();
 }, 2000);
