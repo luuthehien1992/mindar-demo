@@ -37,6 +37,7 @@
 
 <body>
 <div>
+    <button onclick="onClick()">Click me</button>
     <p id="text">ABC</p>
 
     <a href="intent://scan/#Intent;scheme=zxing;package=com.google.zxing.client.android;end">
@@ -45,17 +46,23 @@
 </div>
 
 <script>
+    function onClick() {
+        const url = "https://yourdomain.com";
+        window.open(url, '_blank');
+        console.log('clicked')
+    }
+
     const ua = navigator.userAgent || navigator.vendor || window.opera;
     const isFacebook = ua.includes("FBAN") || ua.includes("FBAV");
 
     // window.location = 'http://google.com'
-    !function () {
-        "use strict";
-        var e = {};
-        (function (e) {
-            "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {value: "Module"}), Object.defineProperty(e, "__esModule", {value: !0})
-        })(e), window.ULS = e
-    }()
+    // !function () {
+    //     "use strict";
+    //     var e = {};
+    //     (function (e) {
+    //         "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {value: "Module"}), Object.defineProperty(e, "__esModule", {value: !0})
+    //     })(e), window.ULS = e
+    // }()
 </script>
 </body>
 
