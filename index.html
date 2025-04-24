@@ -44,7 +44,7 @@
         Take a QR code
     </a>
 
-    <div id="browser-banner" style="display:none; background: #fffbcc; padding: 10px;">
+    <div id="browser-banner" style="display:block; background: #fffbcc; padding: 10px;">
         <a href="https://yourdomain.com" target="_blank" rel="noopener noreferrer">
             Tap here to open in your browser for the best experience
         </a>
@@ -52,14 +52,16 @@
 </div>
 
 <script>
-    function onClick() {
-        const url = "https://yourdomain.com";
-        window.open(url, '_blank');
-        console.log('clicked')
-    }
+    window.location = "intent://google.com#Intent;scheme=https;package=com.android.chrome;end;"
 
-    const ua = navigator.userAgent || navigator.vendor || window.opera;
-    const isFacebook = ua.includes("FBAN") || ua.includes("FBAV");
+    // function onClick() {
+    //     const url = "https://yourdomain.com";
+    //     window.open(url, '_blank');
+    //     console.log('clicked')
+    // }
+
+    // const ua = navigator.userAgent || navigator.vendor || window.opera;
+    // const isFacebook = ua.includes("FBAN") || ua.includes("FBAV");
 
     // window.location = 'http://google.com'
     // !function () {
