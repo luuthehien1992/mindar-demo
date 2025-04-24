@@ -1,7 +1,9 @@
 <!doctype html>
-<html prefix="og:http://ogp.me/ns#">
+<html>
 
 <head>
+    <meta name="apple-itunes-app" content="app-id=284815942, app-argument=https://google.com">
+
     <!--    <title>【DATE MỚI&#43;12 VỊ】Ngũ cốc Calbee Ăn Kiêng Giảm Cân Nhật Bản Mix Sữa Chua Hoa Quả Hạt Khô Granola Ăn Sáng-->
     <!--        Lanna Store | Shopee Việt Nam</title>-->
     <!--    <meta charset="utf-8">-->
@@ -37,40 +39,41 @@
 
 <body>
 <div>
-    <button onclick="onClick()">Click me</button>
-    <p id="text">ABC</p>
-
-    <a href="intent://scan/#Intent;scheme=zxing;package=com.google.zxing.client.android;end">
-        Take a QR code
-    </a>
-
-    <div id="browser-banner" style="display:block; background: #fffbcc; padding: 10px;">
-        <a href="https://yourdomain.com" target="_blank" rel="noopener noreferrer">
-            Tap here to open in your browser for the best experience
-        </a>
-    </div>
+    <p>Hello</p>
 </div>
 
 <script>
-    window.location = "intent://google.com#Intent;scheme=https;package=com.android.chrome;end;"
+    function getWebViewPlatform() {
+        const ua = navigator.userAgent || navigator.vendor || window.opera;
 
-    // function onClick() {
-    //     const url = "https://yourdomain.com";
-    //     window.open(url, '_blank');
-    //     console.log('clicked')
-    // }
+        const isAndroid = /Android/i.test(ua);
+        const isIOS = /iPhone|iPad|iPod/i.test(ua);
 
-    // const ua = navigator.userAgent || navigator.vendor || window.opera;
-    // const isFacebook = ua.includes("FBAN") || ua.includes("FBAV");
+        const isFacebook = /FBAN|FBAV/i.test(ua);
+        const isWebViewAndroid = isAndroid && /\bwv\b/.test(ua);
+        const isWebViewiOS = isIOS && /AppleWebKit/.test(ua) && !/Safari/.test(ua);
 
-    // window.location = 'http://google.com'
-    // !function () {
-    //     "use strict";
-    //     var e = {};
-    //     (function (e) {
-    //         "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {value: "Module"}), Object.defineProperty(e, "__esModule", {value: !0})
-    //     })(e), window.ULS = e
-    // }()
+        if (isWebViewAndroid || isFacebook) {
+            return 'android-webview';
+        }
+
+        if (isWebViewiOS || isFacebook) {
+            return 'ios-webview';
+        }
+
+        return 'browser'; // Regular browser
+    }
+
+    let platform = getWebViewPlatform();
+
+    if (platform === 'android-webview') {
+        window.location = "intent://google.com#Intent;scheme=https;package=com.android.chrome;end;"
+    } else if (platform === 'ios-webview') {
+        window.location = "intent://google.com#Intent;scheme=https;package=com.android.chrome;end;"
+    } else {
+        // Regular browser
+        // Do nothing or handle accordingly
+    }
 </script>
 </body>
 
